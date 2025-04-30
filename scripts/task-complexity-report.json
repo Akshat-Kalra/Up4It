@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "generatedAt": "2025-04-30T09:27:25.540Z",
+    "tasksAnalyzed": 10,
+    "thresholdScore": 5,
+    "projectName": "Your Project Name",
+    "usedResearch": false
+  },
+  "complexityAnalysis": [
+    {
+      "taskId": 1,
+      "taskTitle": "Project Setup and Configuration",
+      "complexityScore": 6,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down the React Native project setup with Expo and Supabase integration into specific technical steps, including project initialization, directory structure setup, environment configuration, TypeScript setup, navigation configuration, and theming system implementation.",
+      "reasoning": "This task involves multiple technical configurations (Expo, Supabase, TypeScript, React Navigation) that require careful setup. While each component is well-documented, integrating them together requires attention to detail and proper architecture planning."
+    },
+    {
+      "taskId": 2,
+      "taskTitle": "Authentication System Implementation",
+      "complexityScore": 7,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Detail the specific steps to implement a secure email-based authentication system with magic links restricted to university domains, including Supabase Auth configuration, UI implementation, state management, session handling, protected routes, and error handling.",
+      "reasoning": "Authentication is a critical security feature with multiple components. The domain restriction adds complexity, and proper state management is essential. Error handling and user feedback during authentication flows require careful implementation."
+    },
+    {
+      "taskId": 3,
+      "taskTitle": "User Profile Management",
+      "complexityScore": 5,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Break down the implementation of a user profile system into specific steps covering database model design, profile setup UI, avatar functionality, profile editing, and data validation.",
+      "reasoning": "This task is moderately complex with both frontend and backend components. The avatar functionality may require image handling, but overall the profile requirements are minimal. Database operations and UI implementation are straightforward but require careful coordination."
+    },
+    {
+      "taskId": 4,
+      "taskTitle": "Database Schema Implementation",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Detail the specific steps to design and implement a PostgreSQL database schema with PostGIS for location-based features, including table creation, relationships, security policies, indexes, functions, and triggers.",
+      "reasoning": "Database schema design is foundational and complex, especially with spatial data using PostGIS. Row-level security, proper indexing, and database functions require specialized knowledge. This task has high technical complexity and impacts all subsequent features."
+    },
+    {
+      "taskId": 5,
+      "taskTitle": "Activity Creation Functionality",
+      "complexityScore": 7,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down the implementation of the activity creation feature into specific steps covering form design, emoji picker integration, location selection with Mapbox, time picker implementation, and backend service development.",
+      "reasoning": "This task combines multiple UI components (form, emoji picker, map, time picker) with backend integration. The Mapbox integration for location selection adds significant complexity, and proper validation and error handling are essential for user experience."
+    },
+    {
+      "taskId": 6,
+      "taskTitle": "Activity Feed Implementation",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Detail the specific steps to implement a location-based activity feed, including UI components, geolocation services, distance-based sorting with PostGIS, refresh mechanisms, and handling edge cases like empty states.",
+      "reasoning": "The activity feed is a core feature with complex requirements. It combines geolocation, real-time data, distance calculations, and sophisticated UI. The PostGIS integration for distance-based sorting adds technical complexity, and proper error handling for location services is critical."
+    },
+    {
+      "taskId": 7,
+      "taskTitle": "Join Mechanism and Notifications",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down the implementation of the activity join functionality and notification system into specific steps covering UI components, database operations, push notification setup, notification handling, and match status management.",
+      "reasoning": "This task involves complex real-time features and push notifications across different app states. Setting up Expo Push Notifications requires careful configuration, and the match creation logic with proper database transactions adds complexity. Handling different notification scenarios increases the overall complexity."
+    },
+    {
+      "taskId": 8,
+      "taskTitle": "Activity Expiry System",
+      "complexityScore": 6,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Detail the specific steps to implement an automatic activity expiry system, including database functions, scheduled tasks, client-side verification, notification services, and UI indicators for expiring activities.",
+      "reasoning": "The expiry system requires coordination between scheduled backend processes and client-side logic. While conceptually straightforward, implementing reliable scheduled tasks and ensuring consistent behavior between server and client adds moderate complexity."
+    },
+    {
+      "taskId": 9,
+      "taskTitle": "Share Code Verification System",
+      "complexityScore": 4,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Break down the implementation of the share code verification system into specific steps covering word pair generation algorithm, database storage, UI components for displaying and verifying codes, and user experience considerations.",
+      "reasoning": "This feature is relatively self-contained with moderate complexity. The word pair generation algorithm is straightforward, and the verification UI is simple. The main challenge is ensuring the system is user-friendly and reliable for in-person verification."
+    },
+    {
+      "taskId": 10,
+      "taskTitle": "Testing, Optimization, and Deployment Preparation",
+      "complexityScore": 9,
+      "recommendedSubtasks": 7,
+      "expansionPrompt": "Detail the specific steps for comprehensive testing, performance optimization, and app store deployment preparation, including test implementation, database optimization, caching strategies, build configuration, app store assets creation, and cross-device testing.",
+      "reasoning": "This task encompasses multiple complex areas including testing, performance optimization, and deployment preparation. Each area requires specialized knowledge and careful implementation. The cross-device testing and optimization for battery usage add significant complexity, and preparing all required assets and documentation for app store submission is time-consuming."
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+# Overview
+Up4It (Spur-Of-The-Moment) is a mobile application designed to facilitate spontaneous social connections on university campuses, specifically UBC. The app addresses the fragmented social life typical of commuter-heavy campuses by making ephemeral, micro-hangout opportunities visible to nearby students in real-time. Users can both post and join activities happening within the next 4 hours, creating serendipitous social interactions that would otherwise be missed.
+
+# Core Features
+
+## Real-Time Activity Feed
+- **What**: A chronological timeline showing only activities happening in the next 4 hours, sorted by distance from the user.
+- **Why**: Creates immediate visibility for spontaneous opportunities without the noise of longer-term events.
+- **How**: The feed automatically refreshes and removes expired events (>4 hours old) every 5 minutes.
+
+## Simple Activity Creation
+- **What**: A streamlined three-field form for posting activities: "What" (emoji + short text), "Where" (location), and "When" (time).
+- **Why**: Reduces friction in creating spontaneous invites; should take less than 15 seconds to post.
+- **How**: Time picker auto-rounds to nearest 5 minutes; location can be selected from saved campus spots or by dropping a pin.
+
+## Swipe Interaction
+- **What**: Tinder-style swipe interactions for responding to activities (right = join, left = pass, up = remind later).
+- **Why**: Provides intuitive, quick decision-making that matches the spontaneous nature of the app.
+- **How**: Right swipes instantly notify the activity creator with the joiner's profile.
+
+## Automatic Expiry
+- **What**: Activities automatically disappear from all feeds and storage 4 hours after creation.
+- **Why**: Maintains feed freshness and reinforces the ephemeral, in-the-moment focus of the platform.
+- **How**: Each activity has an expiry timestamp that triggers deletion and notifications.
+
+## Share Code Verification
+- **What**: Both parties receive a matching random word pair that serves as a verbal verification code.
+- **Why**: Solves the awkward "are you the person I'm meeting?" moment without requiring personal contact information exchange.
+- **How**: Generated at match time and shown to both users.
+
+# User Experience
+
+## User Personas
+1. **Commuter Student**: Lives off-campus, has gaps between classes, wants to make better use of time on campus.
+2. **Socially Curious Student**: On-campus resident looking for spontaneous activities beyond scheduled events.
+3. **Activity Initiator**: Confident student who often starts impromptu gatherings but needs a way to find participants.
+
+## Key User Flows
+1. **Browsing Activities**:
+   - Open app
+   - View feed of nearby activities happening soon
+   - Swipe right on interesting activities
+   - Receive match notification with meeting details and verification code
+   - Meet in person
+
+2. **Creating Activities**:
+   - Tap "+" button
+   - Fill in What/Where/When fields
+   - Post activity
+   - Receive notifications when someone joins
+   - Meet in person
+
+3. **Remind Me Later**:
+   - Swipe up on activity
+   - Set reminder interval (10min default)
+   - Receive push notification when reminder time arrives
+   - Decide whether to join or pass
+
+## UI/UX Considerations
+- Clean, minimal design prioritizing activity visibility
+- Location-first organization (nearest activities shown first)
+- Visual indicators for time-urgency (activities starting soon highlighted)
+- Simple profile system requiring minimal setup
+- Campus-specific landmarks and locations in the location picker
+
+# Technical Architecture
+
+## System Components
+- **Mobile Application**: React Native + Expo cross-platform app
+- **Authentication Service**: Supabase Auth with magic link email verification
+- **Database**: Supabase PostgreSQL with PostGIS extension
+- **Real-time Service**: Supabase Realtime for live updates
+- **Notification System**: Expo Push Notifications
+
+## Data Models
+1. **User**:
+   - UUID (primary key)
+   - Email (verified @student.ubc.ca or @alumni.ubc.ca)
+   - Display name
+   - Avatar
+   - Karma score
+   - Saved locations
+
+2. **Activity**:
+   - UUID (primary key)
+   - Creator ID (foreign key to User)
+   - Title (What)
+   - Location (Where - coordinates + optional label)
+   - Time (When)
+   - Creation timestamp
+   - Expiry timestamp (creation + 4hrs)
+   - Status (active, expired)
+
+3. **Match**:
+   - UUID (primary key)
+   - Activity ID (foreign key)
+   - Joiner ID (foreign key to User)
+   - Share code (random word pair)
+   - Status (pending, met, no-show)
+
+## APIs and Integrations
+- **Supabase API**: Core data operations and authentication
+- **Mapbox API**: Map rendering and location services
+- **Expo Push Notification API**: User alerts for matches and reminders
+
+## Infrastructure Requirements
+- **Supabase Project**: Free tier sufficient for MVP
+- **Expo EAS**: Build and deploy mobile apps
+- **Vercel**: Optional web version hosting
+
+# Development Roadmap
+
+## MVP Requirements (Phase 1)
+1. **Authentication System**:
+   - Email domain-restricted signup (@student.ubc.ca, @alumni.ubc.ca)
+   - Magic link authentication flow
+   - Minimal profile creation
+
+2. **Core Activity Feed**:
+   - View activities in list format
+   - Basic distance calculation and sorting
+   - Manual refresh
+
+3. **Basic Activity Creation**:
+   - Simple form with the three fields
+   - Location selection from map
+   - Time selection with auto-rounding
+
+4. **Simple Join Mechanism**:
+   - Tap to join instead of swipe interaction
+   - Basic notification to creator
+
+5. **Activity Expiry**:
+   - Scheduled task to remove expired activities
+   - Simple expiry logic
+
+## Future Enhancements (Phase 2)
+1. **Enhanced Interaction**:
+   - Implement swipe mechanics
+   - Add "remind me later" functionality
+   - Improve real-time notifications
+
+2. **Advanced Location Features**:
+   - Campus landmark presets
+   - More accurate distance calculations
+   - Map view of nearby activities
+
+3. **Share Code System**:
+   - Generate and display verification codes
+   - Post-meetup confirmation
+
+4. **Karma System**:
+   - Simple feedback after meetups
+   - Display of reputation scores
+   - Throttling for users with poor scores
+
+## Polish and Scale (Phase 3)
+1. **UI/UX Refinements**:
+   - Animations and transitions
+   - Theme customization
+   - Accessibility improvements
+
+2. **Performance Optimizations**:
+   - Caching strategies
+   - Lazy loading
+   - Battery usage optimization
+
+3. **Expanded Features**:
+   - Activity categories/tags
+   - Premium filters
+   - Group activities
+
+# Logical Dependency Chain
+1. **Authentication & User Profiles** (Foundation)
+   - Must be built first to enable user identification
+   - Establishes the security boundary of verified students
+
+2. **Activity Creation & Storage**
+   - Depends on authentication
+   - Enables the basic content generation
+
+3. **Activity Feed & Discovery**
+   - Depends on activity creation
+   - Creates the core browsing experience
+
+4. **Join Mechanism & Notifications**
+   - Depends on feed and user profiles
+   - Enables the social connection aspect
+
+5. **Expiry System**
+   - Can be implemented alongside or after the feed
+   - Critical for maintaining the ephemeral nature
+
+6. **Advanced Features** (Share codes, karma)
+   - Build after the core experience works
+   - Can be added incrementally
+
+# Risks and Mitigations
+
+## Technical Challenges
+- **Risk**: Real-time performance issues with many concurrent users
+  **Mitigation**: Implement pagination, geofencing, and optimize database queries
+
+- **Risk**: Battery drain from location services
+  **Mitigation**: Use foreground-only location updates, optimize polling frequency
+
+- **Risk**: Push notification reliability
+  **Mitigation**: Implement in-app notifications as backup, add manual refresh option
+
+## MVP Scoping
+- **Risk**: Feature creep extending development timeline
+  **Mitigation**: Strictly prioritize core four features, defer all enhancements
+
+- **Risk**: MVP too limited to demonstrate value
+  **Mitigation**: Focus on the "magic moment" of successful spontaneous meetups
+
+## Resource Constraints
+- **Risk**: Development resource limitations
+  **Mitigation**: Use managed services (Supabase, Expo) to reduce infrastructure work
+
+- **Risk**: Scaling costs if successful
+  **Mitigation**: Design with cost-efficiency in mind, prepare revenue model for scale
+
+# Appendix
+
+## Research Findings
+- Student survey indicated 78% of respondents had experienced wanting to join an activity but not knowing who to go with
+- Analysis of campus foot traffic shows peak potential usage times between 11am-2pm and 4pm-7pm
+- Competing products (Facebook groups, Discord) lack the ephemeral, location-based focus
+
+## Technical Specifications
+- Target platforms: iOS and Android via React Native
+- Minimum viable database: PostgreSQL with PostGIS
+- Authentication: JWT-based with email domain verification
+- Estimated storage requirements: <1GB for MVP with 1000 users 
