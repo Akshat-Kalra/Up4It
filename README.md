@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Up4It
 
-## Getting Started
+> Spur-Of-The-Moment social discovery for UBC students – meet, hang out, and connect on the fly.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 What Is It?
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Up4It** makes spontaneous hangouts visible *right now* — not buried in Facebook groups or forgotten GroupMe threads. It solves the “I’d go if I had someone to go with” problem by letting students create or join casual, short-notice meetups around campus.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎯 The Core Itch It Scratches
 
-## Learn More
+UBC is a commuter-heavy campus. Social life feels fragmented. Up4It makes micro-hangouts visible in real time, helping students act on spontaneous plans without friction.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧭 How It Works
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Step       | User Sees...                                                       | Behind the Scenes |
+|------------|--------------------------------------------------------------------|-------------------|
+| Open app   | Feed of events in the next 4 hours, sorted by distance.            | Old events pruned every 5 minutes. |
+| Swipe      | Right = join, Left = skip, Up = “remind me later”.                | Firestore real-time listeners push updates. |
+| Post       | Simple form: What + Where + When.                                 | Cloud Function adds expiry timestamp + geohash. |
+| Meet-up    | Share-code confirms match (e.g., “blue-banana”).                   | No oversharing of personal info. |
+| Auto-fade  | Cards disappear after 4h.                                          | Scheduled Cloud Tasks clean up and notify. |
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛡️ Safety & Trust Levers
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Campus-only email access.
+- Karma score from peer feedback (thumbs up/down).
+- Report/block features with moderation.
+- Approximate location until matched.
+
+---
+
+## 📄 License
+
+MIT – see `LICENSE.md`.
+
+---
+
+## 👥 Team
+
+Built by students, for students. Made with ☕, React Native, and spontaneous energy.
