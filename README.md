@@ -46,3 +46,6 @@ MIT – see `LICENSE.md`.
 ## 👥 Team
 
 Built by students, for students. Made with ☕, React Native, and spontaneous energy.
+
+- [Akshat](https://github.com/Akshat-Kalra)
+- [Parth](https://github.com/parthkumar-patel)
