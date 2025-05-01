@@ -31,7 +31,7 @@
                 "--avatars"
             ],
             "env": {
-                "APPWRITE_API_KEY": "standard_7f0a6eeaaf2466a5ea4415a6d10c852c4f9ad077d0355edfa0ee8be6ef21be8bef1c287ff9027c881466d5a9e87477b7fa056851787e7c699bfdc59a708b2bbe2ef3f6b8f16df0005aa92e68b9d808c038697d1fffb3b3743987241c247d74c85c2b17e19608e36032b70b0715976738b50b39216f2d606d065c8d1f49416a5c",
+                "APPWRITE_API_KEY": "standard_168f9fd2b496f2716802ace5cf356899f60421eba6a4da44cb7131959478d781e9365b534f3c86de54e6c6164bb7c988cf04db8d9f8723dcb1b4d806e67a5a71dfee06f1690fcd99b6272ba6dfe9e159d9de00a57213499bfe4201d8e5318a14dcea079c28c58ad337ea7e86bb30ae09c1ae8a5ebf0ed3aadef30193330fcd72",
                 "APPWRITE_PROJECT_ID": "6811f9090020cdcb835a"
             }
         }
