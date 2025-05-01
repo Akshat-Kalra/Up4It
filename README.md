@@ -1,51 +1,50 @@
-# Up4It
+# Welcome to your Expo app 👋
 
-> Spur-Of-The-Moment social discovery for UBC students – meet, hang out, and connect on the fly.
+This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
----
+## Get started
 
-## 🚀 What Is It?
+1. Install dependencies
 
-**Up4It** makes spontaneous hangouts visible *right now* — not buried in Facebook groups or forgotten GroupMe threads. It solves the “I’d go if I had someone to go with” problem by letting students create or join casual, short-notice meetups around campus.
+   ```bash
+   npm install
+   ```
 
----
+2. Start the app
 
-## 🎯 The Core Itch It Scratches
+   ```bash
+   npx expo start
+   ```
 
-UBC is a commuter-heavy campus. Social life feels fragmented. Up4It makes micro-hangouts visible in real time, helping students act on spontaneous plans without friction.
+In the output, you'll find options to open the app in a
 
----
+- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
+- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
+- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-## 🧭 How It Works
+You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-| Step       | User Sees...                                                       | Behind the Scenes |
-|------------|--------------------------------------------------------------------|-------------------|
-| Open app   | Feed of events in the next 4 hours, sorted by distance.            | Old events pruned every 5 minutes. |
-| Swipe      | Right = join, Left = skip, Up = “remind me later”.                | Firestore real-time listeners push updates. |
-| Post       | Simple form: What + Where + When.                                 | Cloud Function adds expiry timestamp + geohash. |
-| Meet-up    | Share-code confirms match (e.g., “blue-banana”).                   | No oversharing of personal info. |
-| Auto-fade  | Cards disappear after 4h.                                          | Scheduled Cloud Tasks clean up and notify. |
+## Get a fresh project
 
----
+When you're ready, run:
 
-## 🛡️ Safety & Trust Levers
+```bash
+npm run reset-project
+```
 
-- Campus-only email access.
-- Karma score from peer feedback (thumbs up/down).
-- Report/block features with moderation.
-- Approximate location until matched.
+This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
----
+## Learn more
 
-## 📄 License
+To learn more about developing your project with Expo, look at the following resources:
 
-MIT – see `LICENSE.md`.
+- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
+- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
 
----
+## Join the community
 
-## 👥 Team
+Join our community of developers creating universal apps.
 
-Built by students, for students. Made with ☕, React Native, and spontaneous energy.
-
-- [Akshat](https://github.com/Akshat-Kalra)
-- [Parth](https://github.com/parthkumar-patel)
+- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
+- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
