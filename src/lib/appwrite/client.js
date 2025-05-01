@@ -8,10 +8,12 @@ import { APPWRITE_ENDPOINT, APPWRITE_PROJECT_ID } from './config';
 class AppwriteService {
   constructor() {
     this.client = new Client();
+    this.endpoint = APPWRITE_ENDPOINT;
+    this.projectId = APPWRITE_PROJECT_ID;
     
     this.client
-      .setEndpoint(APPWRITE_ENDPOINT)
-      .setProject(APPWRITE_PROJECT_ID);
+      .setEndpoint(this.endpoint)
+      .setProject(this.projectId);
     
     this.account = new Account(this.client);
     this.databases = new Databases(this.client);
@@ -42,6 +44,16 @@ class AppwriteService {
   // Return the functions instance
   getFunctions() {
     return this.functions;
+  }
+  
+  // Return the Appwrite endpoint
+  getEndpoint() {
+    return this.endpoint;
+  }
+  
+  // Return the Appwrite project ID
+  getProjectId() {
+    return this.projectId;
   }
 }
 
